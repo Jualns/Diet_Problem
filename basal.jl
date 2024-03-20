@@ -4,7 +4,7 @@ using LinearAlgebra
 
 if ~occursin("Dieta", pwd())
     try
-        cd("Desktop/Dieta")
+        cd(r"C:\Users\joao.silva\Desktop\Github\Diet_Problem")
     catch
         nothing
     end
