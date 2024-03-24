@@ -1,0 +1,6 @@
+[dependencies]
+XLSX = "0.10.1"
+JuMP = "1.20.0"
+Juniper = "0.9.2"
+HiGHS = "1.9.0"
+Ipopt = "1.6.2"
