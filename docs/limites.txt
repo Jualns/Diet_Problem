@@ -1,0 +1,17 @@
+fibra <= 50 g (https://www.ucsfhealth.org/education/increasing-fiber-intake#:~:text=Although%20there%20is%20no%20dietary,day%20%E2%80%94%20coming%20from%20soluble%20fiber)
+
+colesterol <= 200 mg (https://www.ucsfhealth.org/education/cholesterol-content-of-foods#:~:text=If%20you%20have%20risk%20factors,than%20300%20milligrams%20a%20day)
+colesterol <= 5% Calorias (https://www.healthline.com/health/high-cholesterol/rda)
+
+800 <= calcio <= 1500 mg (https://ods.od.nih.gov/factsheets/Calcium-HealthProfessional/)
+
+300 <= magnesio <= 500 mg (https://ods.od.nih.gov/factsheets/Magnesium-HealthProfessional/)
+
+2,3 Min <= manganes <= 10 mg Max (https://ods.od.nih.gov/factsheets/Manganese-Consumer/)
+
+700 <= fosforo <= 4000 mg Max (https://ods.od.nih.gov/factsheets/Phosphorus-Consumer/)
+
+10 <= ferro <= 45 mg max (https://ods.od.nih.gov/factsheets/Iron-Consumer/)
+
+sodio <= 1500 até 2000 (https://www.who.int/news-room/fact-sheets/detail/salt-reduction#:~:text=For%20adults%2C%20WHO%20recommends%20less,based%20on%20their%20energy%20requirements.)
+
