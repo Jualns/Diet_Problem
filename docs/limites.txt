@@ -15,3 +15,21 @@ colesterol <= 5% Calorias (https://www.healthline.com/health/high-cholesterol/rd
 
 sodio <= 1500 até 2000 (https://www.who.int/news-room/fact-sheets/detail/salt-reduction#:~:text=For%20adults%2C%20WHO%20recommends%20less,based%20on%20their%20energy%20requirements.)
 
+2600 mg <= potassio <= 3800 mg (media 3400) (https://ods.od.nih.gov/factsheets/Potassium-Consumer/)
+
+900 mg recomendado <= cobre <= 10000 max mg (https://www.hsph.harvard.edu/nutritionsource/copper/#:~:text=RDA%3A%20The%20Recommended%20Dietary%20Allowance,younger%20ages%2014%2D18%20years.)
+
+30 mg <= zinco <= 40 mg max (https://ods.od.nih.gov/factsheets/Zinc-Consumer/) 
+
+900 mcg recomendado <= retinol (vitamina A) <= 3000 mcg Max (https://ge.globo.com/eu-atleta/nutricao/guia/consumo-de-vitamina-fortalece-o-sistema-imunologico-e-protege-pele.html)
+
+1,2 mg recomendado <= Tiamina (vitamina B1) <= 1,4 mg (https://www.hsph.harvard.edu/nutritionsource/vitamin-b1/#:~:text=RDA%3A%20The%20Recommended%20Dietary%20Allowance,age%20range%201.1%20mg%20daily.)
+
+1,4 mg recomendado <= ribloflavin <= 2 mg (https://www.hsph.harvard.edu/nutritionsource/riboflavin-vitamin-b2/#:~:text=RDA%3A%20The%20Recommended%20Dietary%20Allowance,and%201.6%20mg%20daily%2C%20respectively.)
+
+
+1,3 mg recomendado <= Piridoxina (vitamina b6) <= 100 mg Max (https://ods.od.nih.gov/factsheets/VitaminB6-HealthProfessional/)
+
+16 mg rec <= Niacina (vitamina b3) (https://www.hsph.harvard.edu/nutritionsource/niacin-vitamin-b3/#:~:text=The%20Recommended%20Dietary%20Allowance%20(RDA,cause%20harmful%20effects%20on%20health.)
+
+90 mg rec <= vitamina C <= 2000 mg Max (https://www.mayoclinic.org/healthy-lifestyle/nutrition-and-healthy-eating/expert-answers/vitamin-c/faq-20058030#:~:text=An%20orange%20or%20a%20cup,is%202%2C000%20mg%20a%20day.) 
