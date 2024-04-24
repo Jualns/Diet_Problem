@@ -1,4 +1,4 @@
-fibra <= 50 g (https://www.ucsfhealth.org/education/increasing-fiber-intake#:~:text=Although%20there%20is%20no%20dietary,day%20%E2%80%94%20coming%20from%20soluble%20fiber)
+30 g <= fibra (https://www.ucsfhealth.org/education/increasing-fiber-intake#:~:text=Although%20there%20is%20no%20dietary,day%20%E2%80%94%20coming%20from%20soluble%20fiber)
 
 colesterol <= 200 mg (https://www.ucsfhealth.org/education/cholesterol-content-of-foods#:~:text=If%20you%20have%20risk%20factors,than%20300%20milligrams%20a%20day)
 colesterol <= 5% Calorias (https://www.healthline.com/health/high-cholesterol/rda)
