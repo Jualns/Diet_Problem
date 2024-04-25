@@ -5,7 +5,7 @@ colesterol <= 5% Calorias (https://www.healthline.com/health/high-cholesterol/rd
 
 800 <= calcio <= 1500 mg (https://ods.od.nih.gov/factsheets/Calcium-HealthProfessional/)
 
-300 <= magnesio <= 500 mg (https://ods.od.nih.gov/factsheets/Magnesium-HealthProfessional/)
+300 <= magnesio <= 500 (https://ods.od.nih.gov/factsheets/Magnesium-HealthProfessional/)
 
 2,3 Min <= manganes <= 10 mg Max (https://ods.od.nih.gov/factsheets/Manganese-Consumer/)
 
