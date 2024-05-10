@@ -1,18 +1,18 @@
-Nutriente,inf,sup,Unidade
-Fibra,30.0,9999.0,g
-Colesterol,0.0,200.0,mg
-Cálcio,600.0,1500.0,mg
-Magnésio,300.0,600.0,mg
-Manganês,2.3,10.0,mg
-Fósforo,700.0,4000.0,mg
-Ferro,8.0,45.0,mg
-Sódio,1500.0,3000.0,mg
-Potássio,3500.0,9999.0,mg
-Cobre,900.0,35000.0,mcg
-Zinco,8.0,40.0,mg
-Retinol (Vitamina A),900.0,3000.0,mcg
-Tiamina (Vitamina B1),1.2,1.5,mg
-Riboflavina (Vitamina B2),1.4,2.0,mg
-Piridoxina (Vitamina B6),1.3,9999.0,mg
-Niacina (Vitamina B3),16.0,35.0,mg
-Vitamina C,90.0,2000.0,mg
+Nutriente,inf,sup,Unidade,Alpha
+Colesterol (mg),0.0,200.0,mg,200.0
+Fibra Alimentar (g),30.0,9999.0,g,30.0
+Cálcio (mg),600.0,1500.0,mg,1500.0
+Magnésio (mg),300.0,600.0,mg,600.0
+Manganês (mg),2.3,10.0,mg,10.0
+Fósforo (mg),700.0,4000.0,mg,4000.0
+Ferro (mg),8.0,45.0,mg,45.0
+Sódio (mg),1500.0,3000.0,mg,3000.0
+Potássio (mg),3500.0,9999.0,mg,3500.0
+Cobre (mg),900.0,35000.0,mcg,35000.0
+Zinco (mg),8.0,40.0,mg,40.0
+Retinol (μg),900.0,3000.0,mcg,3000.0
+Tiamina (mg),1.2,9999.0,mg,1.2
+Riboflavina (mg),1.4,9999.0,mg,1.4
+Piridoxina (mg),1.3,9999.0,mg,1.3
+Niacina (mg),16.0,35.0,mg,35.0
+Vitamina C (mg),90.0,2000.0,mg,2000.0

@@ -1,0 +1,5 @@
+{
+    "alimentos_gramas": [3, 7, 26, 410, 456, 567, 524, 260, 377, 131, 116],
+    "alimentos_unidade": [179, 222, 488, 213],
+    "gramas_por_unidade": [150, 100, 50, 150]
+}
