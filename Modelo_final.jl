@@ -35,6 +35,9 @@ alimentos = size(csv_gramas)[1]
 # quantidade de alimentos inteiros
 alimentos_bin = size(csv_inteiros)[1]
 
+# quantidade de micronutrientes
+quantidade_micros = size(df_micro)[1]
+
 # limites de gramas para cada alimento
 lim_sup = 2000
 lim_inf = 100.0
@@ -82,6 +85,8 @@ id_micro = 2
 g(x) = penalizacao(x, y, "Colesterol (mg)") + penalizacao(x, y, "Fibra Alimentar (g)") + penalizacao(x, y, "Cálcio (mg)") + penalizacao(x, y, "Magnésio (mg)") + penalizacao(x, y, "Manganês (mg)") + penalizacao(x, y, "Fósforo (mg)") + penalizacao(x, y, "Ferro (mg)") + penalizacao(x, y, "Sódio (mg)") + penalizacao(x, y, "Potássio (mg)") + penalizacao(x, y, "Cobre (mg)") + penalizacao(x, y, "Zinco (mg)") + penalizacao(x, y, "Retinol (μg)") + penalizacao(x, y, "Tiamina (mg)") + penalizacao(x, y, "Riboflavina (mg)") + penalizacao(x, y, "Piridoxina (mg)") + penalizacao(x, y, "Niacina (mg)") + penalizacao(x, y, "Vitamina C (mg)")
 
 @objective(model, Max, sum(b)/alimentos + sum(y[j]/(y[j]+1e-5) for j = 1:alimentos_bin)/alimentos_bin + g(x))
+
+#@objective(model, Max, sum(b)/alimentos + sum(y[j]/(y[j]+1e-5) for j = 1:alimentos_bin)/alimentos_bin - sum(β[n] for n = 1:quantidade_micros))
 
 @constraint(model, lim_comida_sup[i = 1:alimentos],
     x[i] ≤ lim_sup * b[i])
