@@ -39,8 +39,8 @@ alimentos_bin = size(csv_inteiros)[1]
 quantidade_micros = size(df_micro)[1]
 
 # limites de gramas para cada alimento
-lim_sup = 2000
-lim_inf = 100.0
+lim_sup = 1000.0
+lim_inf = 250.0
 
 
 optimizer = Juniper.Optimizer
@@ -48,9 +48,9 @@ nl_solver = optimizer_with_attributes(Ipopt.Optimizer, "print_level" => 2)
 mip_solver = optimizer_with_attributes(HiGHS.Optimizer)
 model = Model(optimizer_with_attributes(optimizer, "nl_solver" => nl_solver,"mip_solver"=>mip_solver))
 
-@variable(model, lim_sup ≥ x[i = 1:alimentos] ≥ 0, start = 400)
-@variable(model, 3 ≥ y[j = 1:alimentos_bin] ≥ 0, Int, start = 2)
-@variable(model, b[i = 1:alimentos], Bin, start = true)
+@variable(model, lim_sup ≥ x[i = 1:alimentos] ≥ 0, start = 0.)
+@variable(model, 4 ≥ y[j = 1:alimentos_bin] ≥ 0, Int, start = 2)
+@variable(model, b[i = 1:alimentos], Bin, start = false)
 
 f(x) = (sqrt(x^2 + 1e-8) + x)/2
 
@@ -58,9 +58,9 @@ function penalizacao(x, y, nome_micro)
     id_micro = findfirst(n -> n == nome_micro, df_micro.Nutriente)
 
     quant_micro_x = sum(x[i]*csv_gramas[i,nome_micro] for i = 1:alimentos)
-    quant_micro_y = sum(y[j]*csv_gramas[j,nome_micro] for j = 1:alimentos_bin)
+    #quant_micro_y = sum(y[j]*csv_inteiros[j,nome_micro] for j = 1:alimentos_bin) # alterar para csv_inteiros
 
-    quant_micro = quant_micro_x + quant_micro_y
+    quant_micro = quant_micro_x #+ quant_micro_y
     
     α = 1/ALPHA[id_micro]
 
@@ -110,9 +110,9 @@ g(x) = penalizacao(x, y, "Colesterol (mg)") + penalizacao(x, y, "Fibra Alimentar
 optimize!(model)
 
 if typeof(objective_value(model)) == typeof(1.0)
-    X = value.(x)
+    X = round.(value.(x), digits = 2)
     B = value.(b)
-    Y = value.(y)
+    Y = round.(value.(y), digits = 2)
 
 
     ids_cont = findall(x -> abs(x - 1) < 0.2, B)
@@ -136,7 +136,19 @@ if typeof(objective_value(model)) == typeof(1.0)
     println("Totalizando ", round(sum(X) + Y'json["gramas_por_unidade"], digits = 2), " de gramas e ", round(sum(Y), digits = 2), " unidades por dia!")
     println("Total de calorias consumidas com essa dieta: ", round(value(meta_calorica), digits = 2))
 end
-
+println("")
 for micro_ in df_micro.Nutriente
-    println("Penalizacao ", micro_, " ", penalizacao(X, micro_))
+    println("Penalizacao ", micro_, " ", penalizacao(X, Y, micro_))
+end
+
+
+# Criando um dicionário com os vetores
+data = Dict("x" => X, "y" => Y)
+
+# Convertendo o dicionário para uma string JSON
+json_string = JSON.json(data)
+
+# Salvando a string JSON em um arquivo
+open("resultado_modelo.json", "w") do file
+    write(file, json_string)
 end
