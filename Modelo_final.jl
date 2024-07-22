@@ -44,13 +44,13 @@ lim_inf = 250.0
 
 
 optimizer = Juniper.Optimizer
-nl_solver = optimizer_with_attributes(Ipopt.Optimizer, "print_level" => 2)
+nl_solver = optimizer_with_attributes(Ipopt.Optimizer, "print_level" => 3)
 mip_solver = optimizer_with_attributes(HiGHS.Optimizer)
 model = Model(optimizer_with_attributes(optimizer, "nl_solver" => nl_solver,"mip_solver"=>mip_solver))
 
-@variable(model, lim_sup ≥ x[i = 1:alimentos] ≥ 0, start = 0.)
+@variable(model, lim_sup ≥ x[i = 1:alimentos] ≥ 0, start = lim_inf)
 @variable(model, 4 ≥ y[j = 1:alimentos_bin] ≥ 0, Int, start = 2)
-@variable(model, b[i = 1:alimentos], Bin, start = false)
+@variable(model, b[i = 1:alimentos], Bin, start = true)
 
 f(x) = (sqrt(x^2 + 1e-8) + x)/2
 
@@ -58,9 +58,9 @@ function penalizacao(x, y, nome_micro)
     id_micro = findfirst(n -> n == nome_micro, df_micro.Nutriente)
 
     quant_micro_x = sum(x[i]*csv_gramas[i,nome_micro] for i = 1:alimentos)
-    #quant_micro_y = sum(y[j]*csv_inteiros[j,nome_micro] for j = 1:alimentos_bin) # alterar para csv_inteiros
+    quant_micro_y = sum(y[j]*csv_inteiros[j,nome_micro] for j = 1:alimentos_bin) # alterar para csv_inteiros
 
-    quant_micro = quant_micro_x #+ quant_micro_y
+    quant_micro = quant_micro_x + quant_micro_y
     
     α = 1/ALPHA[id_micro]
 
@@ -82,9 +82,13 @@ end
 
 id_micro = 2
 
-g(x) = penalizacao(x, y, "Colesterol (mg)") + penalizacao(x, y, "Fibra Alimentar (g)") + penalizacao(x, y, "Cálcio (mg)") + penalizacao(x, y, "Magnésio (mg)") + penalizacao(x, y, "Manganês (mg)") + penalizacao(x, y, "Fósforo (mg)") + penalizacao(x, y, "Ferro (mg)") + penalizacao(x, y, "Sódio (mg)") + penalizacao(x, y, "Potássio (mg)") + penalizacao(x, y, "Cobre (mg)") + penalizacao(x, y, "Zinco (mg)") + penalizacao(x, y, "Retinol (μg)") + penalizacao(x, y, "Tiamina (mg)") + penalizacao(x, y, "Riboflavina (mg)") + penalizacao(x, y, "Piridoxina (mg)") + penalizacao(x, y, "Niacina (mg)") + penalizacao(x, y, "Vitamina C (mg)")
+g(x,y) = penalizacao(x, y, "Colesterol (mg)") + penalizacao(x, y, "Fibra Alimentar (g)") + penalizacao(x, y, "Cálcio (mg)") + penalizacao(x, y, "Magnésio (mg)") + penalizacao(x, y, "Manganês (mg)") + penalizacao(x, y, "Fósforo (mg)") + penalizacao(x, y, "Ferro (mg)") + penalizacao(x, y, "Sódio (mg)") + penalizacao(x, y, "Potássio (mg)") + penalizacao(x, y, "Cobre (mg)") + penalizacao(x, y, "Zinco (mg)") + penalizacao(x, y, "Retinol (μg)") + penalizacao(x, y, "Tiamina (mg)") + penalizacao(x, y, "Riboflavina (mg)") + penalizacao(x, y, "Piridoxina (mg)") + penalizacao(x, y, "Niacina (mg)") + penalizacao(x, y, "Vitamina C (mg)")
 
-@objective(model, Max, sum(b)/alimentos + sum(y[j]/(y[j]+1e-5) for j = 1:alimentos_bin)/alimentos_bin + g(x))
+h(x,y,b) = sum(x) + sum(sum(y[j]*macros_i[j,i] for i = 1:3) for j = 1:alimentos_bin) + g(x,y)
+
+h(x,y,b) = sum(b)/alimentos + sum(sum(y[j]*macros_i[j,i] for i = 1:3) for j = 1:alimentos_bin) + g(x,y)
+
+@objective(model, Max, h(x,y,b))
 
 #@objective(model, Max, sum(b)/alimentos + sum(y[j]/(y[j]+1e-5) for j = 1:alimentos_bin)/alimentos_bin - sum(β[n] for n = 1:quantidade_micros))
 
